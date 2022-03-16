@@ -10,24 +10,23 @@ class Body extends StatelessWidget {
     return Background(
       bg: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-                margin: const EdgeInsets.symmetric(vertical: 60),
-                child: Image(
-
-                image: const AssetImage('assets/images/GSB-Wel.png'),
-                height: size.height * 0.22,
-              ),
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 60),
+            child: Image(
+              image: const AssetImage('assets/images/GSB-Wel.png'),
+              height: size.height * 0.22,
             ),
-            const Text(
+          ),
+          const Text(
             // Text styles
-          "Bienvenue sur GSB",
+            "Bienvenue sur GSB",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               letterSpacing: 1,
             ),
           ),
-         ],
+        ],
       ),
     );
   }

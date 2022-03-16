@@ -19,8 +19,6 @@ class Background extends StatelessWidget {
         // Placing image in the middle of the screen
         alignment: Alignment.center,
         children: <Widget>[
-
-
           bg,
         ],
       ),

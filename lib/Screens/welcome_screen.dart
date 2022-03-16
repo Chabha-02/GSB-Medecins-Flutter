@@ -33,7 +33,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             _currentIndex = index;
           });
         },
-        children: const <Widget>[MedecinsScreen(),SearchScreen(), DepartementScreen(), PaysScreen()],
+        children: const <Widget>[
+          MedecinsScreen(),
+          SearchScreen(),
+          DepartementScreen(),
+          PaysScreen()
+        ],
       ),
       // Bottom navigation bar
       bottomNavigationBar: BottomNavigationBar(

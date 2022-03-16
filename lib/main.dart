@@ -1,14 +1,9 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gsb_medecins/Screens/welcome_screen.dart';
-import 'package:gsb_medecins/constants.dart';
-import 'package:http/http.dart' as http;
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
-
-
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -18,7 +13,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -29,10 +23,8 @@ class _MyAppState extends State<MyApp> {
       // Setting up the custom themes created in theme.dart
       //
       // Default theme
-
     );
   }
-
 }
 
 //home: const nav(),
