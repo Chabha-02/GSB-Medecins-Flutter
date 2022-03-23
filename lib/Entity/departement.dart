@@ -8,12 +8,14 @@ part 'departement.g.dart';
 class Departement {
   int id;
   String nom;
+  String num;
   List<Medecin>? medecins;
   Pays? pays;
 
   Departement({
     required this.id,
     required this.nom,
+    required this.num,
     this.medecins,
     this.pays,
   });

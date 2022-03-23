@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gsb_medecins/Screens/pays_depart.dart';
 import 'package:gsb_medecins/Service/api.dart';
 
 import '../Entity/pays.dart';
@@ -35,8 +36,12 @@ class _PaysScreenState extends State<PaysScreen> {
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, i) {
                     return ListTile(
-                      title: Text(snapshot.data![i].nom),
-                    );
+                        title: Text(snapshot.data![i].nom),
+                        onTap: () {
+                          Navigator.pushNamed(context, PaysDepart.routeName,
+                              arguments: Api()
+                                  .getDepartementsByPays(snapshot.data![i]));
+                        });
                   });
             }
           },

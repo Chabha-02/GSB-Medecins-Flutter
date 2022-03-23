@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:gsb_medecins/Service/api.dart';
 
 import '../Entity/departement.dart';
+import '../Service/api.dart';
 import '../constants.dart';
+import 'depart_medecin.dart';
 
-class DepartementScreen extends StatefulWidget {
-  const DepartementScreen({Key? key}) : super(key: key);
+class PaysDepart extends StatefulWidget {
+  const PaysDepart({Key? key}) : super(key: key);
+
+  static const routeName = '/paysDepart';
 
   @override
-  _DepartementScreenState createState() => _DepartementScreenState();
+  _PaysDepartState createState() => _PaysDepartState();
 }
 
-class _DepartementScreenState extends State<DepartementScreen> {
+class _PaysDepartState extends State<PaysDepart> {
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Future<List<Departement>>;
     return Scaffold(
       // Add from here...
       appBar: AppBar(
@@ -24,7 +29,7 @@ class _DepartementScreenState extends State<DepartementScreen> {
 
       body: Card(
         child: FutureBuilder<List<Departement>>(
-          future: Api().getDepartements(),
+          future: args,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return const Center(
@@ -35,12 +40,14 @@ class _DepartementScreenState extends State<DepartementScreen> {
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, i) {
                     return ListTile(
-                      title: Text(snapshot.data![i].num +
-                          " - " +
-                          snapshot.data![i].nom),
-                      //onTap: () {
-                      // Navigator.pushNamed(context, DepartMedecin.routeName, arguments: Api().getMedecinsByDepartement(snapshot.data![i]));
-                    );
+                        title: Text(snapshot.data![i].num +
+                            " - " +
+                            snapshot.data![i].nom),
+                        onTap: () {
+                          Navigator.pushNamed(context, DepartMedecin.routeName,
+                              arguments: Api()
+                                  .getMedecinsByDepartement(snapshot.data![i]));
+                        });
                   });
             }
           },

@@ -1,19 +1,23 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gsb_medecins/Entity/medecin.dart';
 
-import '../Entity/medecin.dart';
-import '../Service/api.dart';
 import '../constants.dart';
 
-class MedecinsScreen extends StatefulWidget {
-  const MedecinsScreen({Key? key}) : super(key: key);
+class DepartMedecin extends StatefulWidget {
+  const DepartMedecin({Key? key}) : super(key: key);
+
+  static const routeName = '/departMedecin';
 
   @override
-  _MedecinScreenState createState() => _MedecinScreenState();
+  _DepartMedecinState createState() => _DepartMedecinState();
 }
 
-class _MedecinScreenState extends State<MedecinsScreen> {
+class _DepartMedecinState extends State<DepartMedecin> {
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Future<List<Medecin>>;
     return Scaffold(
       // Add from here...
       appBar: AppBar(
@@ -24,7 +28,7 @@ class _MedecinScreenState extends State<MedecinsScreen> {
 
       body: Card(
         child: FutureBuilder<List<Medecin>>(
-          future: Api().getMedecins(),
+          future: args,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return const Center(
@@ -36,7 +40,7 @@ class _MedecinScreenState extends State<MedecinsScreen> {
                   itemBuilder: (context, i) {
                     return ListTile(
                       title: Text(snapshot.data![i].nom +
-                          " " +
+                          " - " +
                           snapshot.data![i].prenom),
                     );
                   });
@@ -47,4 +51,3 @@ class _MedecinScreenState extends State<MedecinsScreen> {
     );
   }
 }
-//searchDelegate
