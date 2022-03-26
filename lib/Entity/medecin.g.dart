@@ -12,6 +12,9 @@ Medecin _$MedecinFromJson(Map<String, dynamic> json) => Medecin(
       prenom: json['prenom'] as String,
       adresse: json['adresse'] as String,
       tel: json['tel'] as String,
+      spe: json['spe'] == null
+          ? null
+          : Spe.fromJson(json['spe'] as Map<String, dynamic>),
       departement: json['departement'] == null
           ? null
           : Departement.fromJson(json['departement'] as Map<String, dynamic>),
@@ -23,5 +26,6 @@ Map<String, dynamic> _$MedecinToJson(Medecin instance) => <String, dynamic>{
       'prenom': instance.prenom,
       'adresse': instance.adresse,
       'tel': instance.tel,
+      'spe': instance.spe,
       'departement': instance.departement,
     };
