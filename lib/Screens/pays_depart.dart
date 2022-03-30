@@ -24,7 +24,7 @@ class _PaysDepartState extends State<PaysDepart> {
       appBar: AppBar(
 
           title: const Center(
-            child: Text('GSB - Listes des médecins'),
+            child: Text('Listes des départements'),
           )),
 
       body: Card(

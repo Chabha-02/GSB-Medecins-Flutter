@@ -50,14 +50,14 @@ class _MedecinProfilState extends State<MedecinProfil> {
                                             style: Theme
                                                 .of(context)
                                                 .textTheme
-                                                .headline4),
+                                                .headline5),
                                         const Text(" ",
                                             style: TextStyle(fontSize: 30)),
                                         Text(snapshot.data!.nom,
                                             style: Theme
                                                 .of(context)
                                                 .textTheme
-                                                .headline4),
+                                                .headline5),
                                         ],
                       ),
                                         Row(

@@ -38,6 +38,9 @@ class _MedecinScreenState extends State<MedecinsScreen> {
                       title: Text(snapshot.data![i].nom +
                           " " +
                           snapshot.data![i].prenom),
+                      onTap: (){
+                        Navigator.pushNamed(context,MedecinProfil.routeName, arguments: Api().getMedecinByID(snapshot.data![i].id));
+                      },
                     );
                   });
             }

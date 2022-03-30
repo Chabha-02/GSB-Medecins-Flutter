@@ -20,7 +20,7 @@ class _PaysScreenState extends State<PaysScreen> {
       appBar: AppBar(
 
           title: const Center(
-            child: Text('Recherche Médecins par zone :'),
+            child: Text('Recherche médecins par pays :'),
           )),
 
       body: Card(

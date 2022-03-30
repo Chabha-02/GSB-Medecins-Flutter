@@ -21,7 +21,7 @@ class _DepartementScreenState extends State<DepartementScreen> {
       appBar: AppBar(
 
           title: const Center(
-            child: Text('GSB - Listes des médecins'),
+            child: Text('GSB - Spécialités complémentaires'),
           )),
 
       body: Card(

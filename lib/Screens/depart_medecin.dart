@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gsb_medecins/Entity/medecin.dart';
+import 'package:gsb_medecins/Screens/profil.dart';
+import 'package:gsb_medecins/Service/api.dart';
 
 import '../constants.dart';
 
@@ -42,6 +44,10 @@ class _DepartMedecinState extends State<DepartMedecin> {
                       title: Text(snapshot.data![i].nom +
                           "  " +
                           snapshot.data![i].prenom),
+                      onTap: (){
+                        Navigator.pushNamed(context,MedecinProfil.routeName, arguments: Api().getMedecinByID(snapshot.data![i].id));
+                      },
+
 
                     );
                   });
