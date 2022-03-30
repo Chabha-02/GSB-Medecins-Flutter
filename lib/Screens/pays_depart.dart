@@ -22,7 +22,7 @@ class _PaysDepartState extends State<PaysDepart> {
     return Scaffold(
       // Add from here...
       appBar: AppBar(
-          backgroundColor: kPrimaryColor,
+
           title: const Center(
             child: Text('GSB - Listes des médecins'),
           )),

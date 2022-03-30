@@ -54,8 +54,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             label: "Recherche",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.room),
-            label: "Département",
+            icon: Icon(Icons.health_and_safety_outlined ),
+            label: "Spécialités",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.travel_explore),

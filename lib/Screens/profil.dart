@@ -18,7 +18,7 @@ class _MedecinProfilState extends State<MedecinProfil> {
     final args = ModalRoute
         .of(context)!
         .settings
-        .arguments as Future <Medecin>;
+        .arguments as Future<Medecin>;
     return Scaffold(
         appBar: AppBar(
           title: Text('Profil du médecin'),
@@ -27,13 +27,13 @@ class _MedecinProfilState extends State<MedecinProfil> {
           ),),
         body: Container(
             child: Card(
-                child: FutureBuilder <Medecin>(
+                child: FutureBuilder<Medecin>(
                     future: args,
                     builder: (context, snapshot) {
                       if (snapshot.data == null) {
                         return Container(
                           child: Center(
-                            child: Text('Loading...'),
+                            child: Text('Chargement...'),
                           ),
                         );
                       } else {
@@ -58,6 +58,12 @@ class _MedecinProfilState extends State<MedecinProfil> {
                                                 .of(context)
                                                 .textTheme
                                                 .headline4),
+                                        ],
+                      ),
+                                        Row(
+                                          children : [
+
+
                                         snapshot.data!.spe != null
                                             ? Text(
                                           snapshot.data!.spe!
@@ -82,6 +88,7 @@ class _MedecinProfilState extends State<MedecinProfil> {
                                     .colorScheme
                                     .primary),
                                 title: Text(snapshot.data!.adresse),)
+
                               ,
                               const Divider(),
                               ListTile(

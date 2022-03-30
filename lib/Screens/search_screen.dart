@@ -18,7 +18,7 @@ class _SearchScreenState extends State<SearchScreen> {
   var items = List<Medecin>.generate(1, (index) => Medecin(id: 0, prenom: "---", nom: "---", adresse: "---", tel: "---"));
   void filterSearchResults(String query) async {
     if(query.isNotEmpty) {
-      var result = await Api().getMedecinsByNom(query);
+      var result = await Api().getRecherche(query);
       setState(() {
         items.clear();
         items = result;

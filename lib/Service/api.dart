@@ -4,9 +4,10 @@ import 'package:http/http.dart' as http;
 import '../Entity/departement.dart';
 import '../Entity/medecin.dart';
 import '../Entity/pays.dart';
+import '../Entity/spe.dart';
 
 class Api {
-  String baseUrl = "http://192.168.1.11:8080/api";
+  String baseUrl = "http://172.31.1.92:8080/api";
 
   Future<List<Medecin>> getMedecins() async {
     var response = await http.get(Uri.parse(baseUrl + "/medecins/"));
@@ -48,11 +49,13 @@ class Api {
 
   Future<List<Medecin>> getMedecinsByNom(String nom) async {
     var response = await http.get(Uri.parse(baseUrl + "/medecins?nom"));
-    var jsonData = jsonDecode(response.body) as List;
+    var jsonData = jsonDecode(utf8.decode(response.bodyBytes)) as List;
     List<Medecin> medecins = [];
 
     for (var m in jsonData) {
       Medecin medecin = Medecin.fromJson(m);
+
+
       medecins.add(medecin);
     }
     return medecins;
@@ -82,8 +85,48 @@ class Api {
 
   Future<Medecin> getMedecinByID(int id) async {
     var response =
-    await http.get(Uri.parse(baseUrl + 'medecins/'+id.toString()));
+    await http.get(Uri.parse(baseUrl + '/medecins/'+id.toString()));
     var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
     return Medecin.fromJson(jsonData);
   }
+
+  Future<List<Medecin>> getRecherche(String nom) async {
+    var response = await http.get(Uri.parse(baseUrl + "/medecins"));
+    var jsonData = jsonDecode(utf8.decode(response.bodyBytes)) as List;
+    List<Medecin> medecins = [];
+
+    for (var m in jsonData) {
+      Medecin medecin = Medecin.fromJson(m);
+
+      if (medecin.nom.contains(nom)) {
+        medecins.add(medecin);
+      }
+    }
+    return medecins;
+  }
+
+  Future<List<Medecin>> getMedecinsBySpe(
+      Spe spe) async {
+    var response = await http
+        .get(Uri.parse(baseUrl + "/spe/" + spe.id.toString()));
+    var jsonData = jsonDecode(utf8.decode(response.bodyBytes));
+    return Spe.fromJson(jsonData).medecins!;
+  }
+
+  Future<List<Spe>> getSpe() async {
+    var response = await http.get(Uri.parse(baseUrl + "/spe/"));
+    var jsonData = jsonDecode(utf8.decode(response.bodyBytes)) as List;
+    List<Spe> spes = [];
+
+    for (var m in jsonData) {
+      Spe spe = Spe.fromJson(m);
+      spes.add(spe);
+    }
+    return spes;
+  }
+
+
+
+
+
 }

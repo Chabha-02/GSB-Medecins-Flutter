@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gsb_medecins/Service/api.dart';
 
 import '../Entity/departement.dart';
+import '../Entity/spe.dart';
 import '../constants.dart';
+import 'depart_medecin.dart';
 
 class DepartementScreen extends StatefulWidget {
   const DepartementScreen({Key? key}) : super(key: key);
@@ -17,14 +19,14 @@ class _DepartementScreenState extends State<DepartementScreen> {
     return Scaffold(
       // Add from here...
       appBar: AppBar(
-          backgroundColor: kPrimaryColor,
+
           title: const Center(
             child: Text('GSB - Listes des médecins'),
           )),
 
       body: Card(
-        child: FutureBuilder<List<Departement>>(
-          future: Api().getDepartements(),
+        child: FutureBuilder<List<Spe>>(
+          future: Api().getSpe(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return const Center(
@@ -35,11 +37,10 @@ class _DepartementScreenState extends State<DepartementScreen> {
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, i) {
                     return ListTile(
-                      title: Text(snapshot.data![i].num +
-                          " - " +
-                          snapshot.data![i].nom),
-                      //onTap: () {
-                      // Navigator.pushNamed(context, DepartMedecin.routeName, arguments: Api().getMedecinsByDepartement(snapshot.data![i]));
+                      title: Text(snapshot.data![i].libelle),
+                      onTap: () {
+                    Navigator.pushNamed(context, DepartMedecin.routeName, arguments: Api().getMedecinsBySpe(snapshot.data![i]));
+                    }
                     );
                   });
             }

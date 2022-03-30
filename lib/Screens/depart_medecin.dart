@@ -21,7 +21,7 @@ class _DepartMedecinState extends State<DepartMedecin> {
     return Scaffold(
       // Add from here...
       appBar: AppBar(
-          backgroundColor: kPrimaryColor,
+
           title: const Center(
             child: Text('GSB - Listes des médecins'),
           )),
@@ -40,8 +40,9 @@ class _DepartMedecinState extends State<DepartMedecin> {
                   itemBuilder: (context, i) {
                     return ListTile(
                       title: Text(snapshot.data![i].nom +
-                          " - " +
+                          "  " +
                           snapshot.data![i].prenom),
+
                     );
                   });
             }

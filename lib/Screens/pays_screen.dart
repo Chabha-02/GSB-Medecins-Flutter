@@ -18,9 +18,9 @@ class _PaysScreenState extends State<PaysScreen> {
     return Scaffold(
       // Add from here...
       appBar: AppBar(
-          backgroundColor: kPrimaryColor,
+
           title: const Center(
-            child: Text('GSB - Listes des médecins'),
+            child: Text('Recherche Médecins par zone :'),
           )),
 
       body: Card(
@@ -39,8 +39,7 @@ class _PaysScreenState extends State<PaysScreen> {
                         title: Text(snapshot.data![i].nom),
                         onTap: () {
                           Navigator.pushNamed(context, PaysDepart.routeName,
-                              arguments: Api()
-                                  .getDepartementsByPays(snapshot.data![i]));
+                              arguments: Api().getDepartementsByPays(snapshot.data![i]));
                         });
                   });
             }

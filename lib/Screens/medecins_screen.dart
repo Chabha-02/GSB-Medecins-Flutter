@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gsb_medecins/Screens/profil.dart';
 
 import '../Entity/medecin.dart';
 import '../Service/api.dart';
@@ -17,10 +18,9 @@ class _MedecinScreenState extends State<MedecinsScreen> {
     return Scaffold(
       // Add from here...
       appBar: AppBar(
-          backgroundColor: kPrimaryColor,
           title: const Center(
-            child: Text('GSB - Listes des médecins'),
-          )),
+        child: Text('GSB - Listes des médecins'),
+      )),
 
       body: Card(
         child: FutureBuilder<List<Medecin>>(
